@@ -10,7 +10,7 @@ function knightMoves(start, goal) {
         const node = queue.shift(); 
 
         if (JSON.stringify(node) == JSON.stringify(goal)) {
-            return buildPath(goal, parent)
+            return buildPath(JSON.stringify(goal), parent)
         }
 
         for ( let neighbor of getKnightMoves(node)) {
@@ -21,4 +21,15 @@ function knightMoves(start, goal) {
             }
         }
     }
+}
+
+function buildPath(goal, parent) {
+    const path = [];
+    let current = goal;
+
+    while (current !== undefined) {
+        path.unshift(JSON.parse(current))
+        current = parent.get(current);
+    }
+    return path;
 }
