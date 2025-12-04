@@ -4,7 +4,7 @@ function knightMoves(start, goal) {
     const parent = new Map();
 
     queue.push(start);
-    visited.add(start); 
+    visited.add(JSON.stringify(start));
 
     while (queue.length > 0) {
         const node = queue.shift(); 
